@@ -1,0 +1,31 @@
+# permissions for end users to edit swansons.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: swanson-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: swansoner
+    app.kubernetes.io/part-of: swansoner
+    app.kubernetes.io/managed-by: kustomize
+  name: swanson-editor-role
+rules:
+- apiGroups:
+  - cache.jacobboykin.com
+  resources:
+  - swansons
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cache.jacobboykin.com
+  resources:
+  - swansons/status
+  verbs:
+  - get

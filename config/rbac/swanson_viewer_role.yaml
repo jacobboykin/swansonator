@@ -1,0 +1,27 @@
+# permissions for end users to view swansons.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: swanson-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: swansoner
+    app.kubernetes.io/part-of: swansoner
+    app.kubernetes.io/managed-by: kustomize
+  name: swanson-viewer-role
+rules:
+- apiGroups:
+  - cache.jacobboykin.com
+  resources:
+  - swansons
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - cache.jacobboykin.com
+  resources:
+  - swansons/status
+  verbs:
+  - get
