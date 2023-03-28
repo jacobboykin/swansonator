@@ -12,7 +12,7 @@ metadata:
   name: swanson-editor-role
 rules:
 - apiGroups:
-  - cache.jacobboykin.com
+  - parks.jacobboykin.com
   resources:
   - swansons
   verbs:
@@ -24,7 +24,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - cache.jacobboykin.com
+  - parks.jacobboykin.com
   resources:
   - swansons/status
   verbs:

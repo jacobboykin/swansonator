@@ -1,0 +1,33 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - parks.jacobboykin.com
+  resources:
+  - swansons
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - parks.jacobboykin.com
+  resources:
+  - swansons/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - parks.jacobboykin.com
+  resources:
+  - swansons/status
+  verbs:
+  - get
+  - patch
+  - update

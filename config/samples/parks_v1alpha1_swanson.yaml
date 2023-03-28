@@ -1,4 +1,4 @@
-apiVersion: cache.jacobboykin.com/v1alpha1
+apiVersion: parks.jacobboykin.com/v1alpha1
 kind: Swanson
 metadata:
   labels:
@@ -9,4 +9,4 @@ metadata:
     app.kubernetes.io/created-by: swansoner
   name: swanson-sample
 spec:
-  # TODO(user): Add fields here
+  foo: nice-man
