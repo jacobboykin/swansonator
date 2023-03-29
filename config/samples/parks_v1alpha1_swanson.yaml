@@ -9,4 +9,5 @@ metadata:
     app.kubernetes.io/created-by: swansoner
   name: swanson-sample
 spec:
-  foo: nice-man
+  size: 3
+  kind: happy
