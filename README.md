@@ -1,94 +1,77 @@
 # swansonator
-// TODO(user): Add simple overview of use/purpose
+A Kubernetes Operator that manages the mission-critical web application, [swanson](https://github.com/jacobboykin/swanson).
+
+TODO fix this with links
+
+* Description
+* Getting Started
+* Project Notes for Reviewers
 
 ## Description
-// TODO(user): An in-depth paragraph about your project and overview of use
+[swanson](https://github.com/jacobboykin/swanson) is a silly little web server I made just for this Operator project. It renders a GIF of Ron Swanson based on the value of the `SWANSON_KIND` environment variable. The swansonator Operator will manage a Deployment and Cluster IP Service for the swanson web app. The Swanson CRD exposes two values for you to configure your swanson instance:
+* **Spec.Kind**: The "kind" of Ron GIF you'd like. The app supports three values, `happy`, `sad`, and `chaos`.
+* **Spec.Size**: The number of replicas you'd like the swanson Deployment to have.
 
 ## Getting Started
-You’ll need a Kubernetes cluster to run against. You can use [KIND](https://sigs.k8s.io/kind) to get a local cluster for testing, or run against a remote cluster.
-**Note:** Your controller will automatically use the current context in your kubeconfig file (i.e. whatever cluster `kubectl cluster-info` shows).
-
-### Running on the cluster
-1. Install Instances of Custom Resources:
-
-```sh
-kubectl apply -f config/samples/
+You’ll need a Kubernetes cluster to run against. You can use [kind](https://sigs.k8s.io/kind) or [K3D](https://k3d.io/) to get a local cluster for testing, or run against a remote cluster. This documentation will use kind as an example. Make sure your current context is set to the cluster you'd like the operator deployed to. You can create a local cluster with kind by running the following:
+```shell
+$ kind create cluster --name swansonator
+```
+### Running the operator
+1. Deploy the operator and its CRDs:
+```shell
+$ make deploy
+```
+After a minute or two, the operator will be running in your cluster:
+```shell
+$ kubectl get po -n swansonator-system
+NAME                                              READY   STATUS    RESTARTS   AGE
+swansonator-controller-manager-6499d94b9b-2twhj   2/2     Running   0          2m20s
 ```
 
-2. Build and push your image to the location specified by `IMG`:
-
-```sh
-make docker-build docker-push IMG=<some-registry>/swansonator:tag
+### Deploying swanson
+1. Deploy an instance of swanson using the sample CR:
+```shell
+$ kubectl apply -f ./config/samples/parks_v1alpha1_swanson.yaml             
 ```
 
-3. Deploy the controller to the cluster with the image specified by `IMG`:
+The operator will create a Deployment and Service for the swanson app with the desired ron "kind" and size:
+```shell
+$ kubectl get deploy                                                                   
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+swanson-sample   3/3     3            3           3m58s
 
-```sh
-make deploy IMG=<some-registry>/swansonator:tag
+$ kubectl get svc                                              
+NAME             TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+kubernetes       ClusterIP   10.96.0.1      <none>        443/TCP    16m
+swanson-sample   ClusterIP   10.96.51.147   <none>        8080/TCP   4m15s
 ```
 
-### Uninstall CRDs
-To delete the CRDs from the cluster:
-
-```sh
-make uninstall
+### Test it out
+To save time, this project doesn't include any Ingress or LoadBalancer features.
+1. Use port-forwarding to test the swanson app:
+```shell
+$ kubectl port-forward svc/swanson-sample 8080                                 
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
 ```
+2. Visit the app in your browser:
 
-### Undeploy controller
-UnDeploy the controller from the cluster:
+TODO: INSERT CHAOS RON
 
-```sh
-make undeploy
+### Make a change to the desired state
+1. Stop the port-forwarding process (i.e. via ctrl-c). The change will trigger new Pods to roll out, and will break the port-forwarding.
+2. Make a change to the desired state. For example, changing the type of Ron GIF:
+```shell
+$ kubectl patch swanson swanson-sample -p '{"spec":{"kind": "happy"}}' --type=merge
 ```
+3. Wait for the new Pods to roll out after the Deployment is updated. 
+4. Start port-forwarding again, and visit the app in your browser:
 
-## Contributing
-// TODO(user): Add detailed information on how you would like others to contribute to this project
+TODO: INSERT HAPPY RON
 
-### How it works
-This project aims to follow the Kubernetes [Operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
-
-It uses [Controllers](https://kubernetes.io/docs/concepts/architecture/controller/),
-which provide a reconcile function responsible for synchronizing resources until the desired state is reached on the cluster.
-
-### Test It Out
-1. Install the CRDs into the cluster:
-
-```sh
-make install
+### Tear it all down
+Once you're done testing, you can uninstall the operator from the cluster by running:
+```shell
+$ make undeploy
 ```
-
-2. Run your controller (this will run in the foreground, so switch to a new terminal if you want to leave it running):
-
-```sh
-make run
-```
-
-**NOTE:** You can also run this in one step by running: `make install run`
-
-### Modifying the API definitions
-If you are editing the API definitions, generate the manifests such as CRs or CRDs using:
-
-```sh
-make manifests
-```
-
-**NOTE:** Run `make --help` for more information on all potential `make` targets
-
-More information can be found via the [Kubebuilder Documentation](https://book.kubebuilder.io/introduction.html)
-
-## License
-
-Copyright 2023.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-

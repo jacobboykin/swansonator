@@ -37,11 +37,11 @@ spec:
             properties:
               kind:
                 default: chaos
+                description: Kind defines the Swanson GIF type
                 type: string
               size:
                 description: Size defines the number of Swanson instances
                 format: int32
-                maximum: 3
                 minimum: 1
                 type: integer
             type: object

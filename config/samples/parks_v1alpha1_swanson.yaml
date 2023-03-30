@@ -10,4 +10,4 @@ metadata:
   name: swanson-sample
 spec:
   size: 3
-  kind: happy
+  kind: chaos
