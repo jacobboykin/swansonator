@@ -10,6 +10,8 @@ A Kubernetes Operator that manages the mission-critical web application, [swanso
 * **Spec.Kind**: The "kind" of Ron GIF you'd like. The app supports three values, `happy`, `sad`, and `chaos`.
 * **Spec.Size**: The number of replicas you'd like the swanson Deployment to have.
 
+![dancing](https://user-images.githubusercontent.com/9063688/228723229-27d967be-2930-4c80-8425-1191dba15f3d.gif)
+
 ## Getting Started
 You’ll need a Kubernetes cluster to run against. You can use [kind](https://sigs.k8s.io/kind) or [K3D](https://k3d.io/) to get a local cluster for testing, or run against a remote cluster. This documentation will use kind as an example. Make sure your current context is set to the cluster you'd like the operator deployed to. You can create a local cluster with kind by running the following:
 ```shell
