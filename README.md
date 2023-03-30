@@ -35,7 +35,7 @@ swansonator-controller-manager-6499d94b9b-2twhj   2/2     Running   0          2
 $ kubectl apply -f ./config/samples/parks_v1alpha1_swanson.yaml             
 ```
 
-The operator will create a Deployment and Service for the swanson app with the desired ron "kind" and size:
+The operator will create a Deployment and Service for the swanson app with the desired Ron Swanson "kind" and size:
 ```shell
 $ kubectl get deploy                                                                   
 NAME             READY   UP-TO-DATE   AVAILABLE   AGE
@@ -80,6 +80,7 @@ $ make undeploy
 
 Thoughts and Ramblings:
 * I saw no need for a Finalizer here. This app doesn't manage PVCs or resources outside the cluster. It relies on Kubernetes' garbage collection via  `metadata.ownerReferences`.
+* To save time, this project doesn't deploy any LoadBalancer or Ingress resources. Use `kubectl`'s port-forwarding feature to interact with the swanson application. 
 
 How I'd continue to iterate on a project similar to this:
 * Further use of Kubernetes Event recording to communicate reconciliation events to the user.
