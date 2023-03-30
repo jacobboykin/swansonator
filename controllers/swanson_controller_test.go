@@ -51,8 +51,6 @@ var _ = Describe("Swanson controller", func() {
 			swanson := &parksv1alpha1.Swanson{}
 			err := k8sClient.Get(ctx, typeNamespaceName, swanson)
 			if err != nil && errors.IsNotFound(err) {
-				// Let's mock our custom resource at the same way that we would
-				// apply on the cluster the manifest under config/samples
 				swanson := &parksv1alpha1.Swanson{
 					ObjectMeta: metav1.ObjectMeta{
 						Name:      SwansonName,

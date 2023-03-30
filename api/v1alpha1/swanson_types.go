@@ -34,7 +34,7 @@ type SwansonSpec struct {
 	// +kubebuilder:validation:Maximum=3
 	// +kubebuilder:validation:ExclusiveMaximum=false
 
-	// Size defines the number of Memcached instances
+	// Size defines the number of Swanson instances
 	// +operator-sdk:csv:customresourcedefinitions:type=spec
 	Size int32 `json:"size,omitempty"`
 
@@ -48,16 +48,16 @@ type SwansonStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Represents the observations of a Memcached's current state.
-	// Memcached.status.conditions.type are: "Available", "Progressing", and "Degraded"
-	// Memcached.status.conditions.status are one of True, False, Unknown.
-	// Memcached.status.conditions.reason the value should be a CamelCase string and producers of specific
+	// Represents the observations of a Swanson's current state.
+	// Swanson.status.conditions.type are: "Available", "Progressing", and "Degraded"
+	// Swanson.status.conditions.status are one of True, False, Unknown.
+	// Swanson.status.conditions.reason the value should be a CamelCase string and producers of specific
 	// condition types may define expected values and meanings for this field, and whether the values
 	// are considered a guaranteed API.
-	// Memcached.status.conditions.Message is a human readable message indicating details about the transition.
+	// Swanson.status.conditions.Message is a human readable message indicating details about the transition.
 	// For further information see: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
 
-	// Conditions store the status conditions of the Memcached instances
+	// Conditions store the status conditions of the Swanson instances
 	// +operator-sdk:csv:customresourcedefinitions:type=status
 	Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
 }
