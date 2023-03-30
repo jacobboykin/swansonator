@@ -79,12 +79,13 @@ $ make undeploy
 ## Project Notes for Reviewers
 
 Thoughts and Ramblings:
-* I saw no need for a Finalizer here. This app doesn't manage PVCs or resources outside of the cluster. It relies on Kubernetes' garbage collection via  `metadata.ownerReferences`.
+* I saw no need for a Finalizer here. This app doesn't manage PVCs or resources outside the cluster. It relies on Kubernetes' garbage collection via  `metadata.ownerReferences`.
 
 How I'd continue to iterate on a project similar to this:
-* Further use of Kubernetes Event recording to communicate reconcilliation events to the user.
+* Further use of Kubernetes Event recording to communicate reconciliation events to the user.
 * The use of Predicates to filter irrelevant events that trigger the reconciler.
 * Add mutating/validating webhooks to set default values and for validation.
 * More tests and E2E tests that validate the operator and its manifests in a kind or k3d cluster.
 * Improved logging with a DEBUG level.
+* Refactor the reconciliation logic into smaller chunks.
 
