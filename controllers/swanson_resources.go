@@ -9,7 +9,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	parksv1alpha1 "github.com/jacobboykin/swansoner/api/v1alpha1"
+	parksv1alpha1 "github.com/jacobboykin/swansonator/api/v1alpha1"
 )
 
 const (
@@ -118,7 +118,7 @@ func labelsForSwanson(name string) map[string]string {
 	return map[string]string{"app.kubernetes.io/name": "Swanson",
 		"app.kubernetes.io/instance":   name,
 		"app.kubernetes.io/version":    imageTag,
-		"app.kubernetes.io/part-of":    "swansoner",
+		"app.kubernetes.io/part-of":    "swansonator",
 		"app.kubernetes.io/created-by": "controller-manager",
 	}
 }

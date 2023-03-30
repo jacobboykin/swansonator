@@ -5,8 +5,8 @@ metadata:
     app.kubernetes.io/name: clusterrolebinding
     app.kubernetes.io/instance: manager-rolebinding
     app.kubernetes.io/component: rbac
-    app.kubernetes.io/created-by: swansoner
-    app.kubernetes.io/part-of: swansoner
+    app.kubernetes.io/created-by: swansonator
+    app.kubernetes.io/part-of: swansonator
     app.kubernetes.io/managed-by: kustomize
   name: manager-rolebinding
 roleRef:

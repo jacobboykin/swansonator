@@ -1,4 +1,4 @@
-module github.com/jacobboykin/swansoner
+module github.com/jacobboykin/swansonator
 
 go 1.19
 

@@ -1,12 +1,12 @@
-apiVersion: parks.jacobboykin.com/v1alpha1
+apiVersion: parks.department.com/v1alpha1
 kind: Swanson
 metadata:
   labels:
     app.kubernetes.io/name: swanson
     app.kubernetes.io/instance: swanson-sample
-    app.kubernetes.io/part-of: swansoner
+    app.kubernetes.io/part-of: swansonator
     app.kubernetes.io/managed-by: kustomize
-    app.kubernetes.io/created-by: swansoner
+    app.kubernetes.io/created-by: swansonator
   name: swanson-sample
 spec:
   size: 3

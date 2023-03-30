@@ -5,8 +5,8 @@ metadata:
     app.kubernetes.io/name: clusterrole
     app.kubernetes.io/instance: proxy-role
     app.kubernetes.io/component: kube-rbac-proxy
-    app.kubernetes.io/created-by: swansoner
-    app.kubernetes.io/part-of: swansoner
+    app.kubernetes.io/created-by: swansonator
+    app.kubernetes.io/part-of: swansonator
     app.kubernetes.io/managed-by: kustomize
   name: proxy-role
 rules:

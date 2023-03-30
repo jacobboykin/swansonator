@@ -6,8 +6,8 @@ metadata:
     app.kubernetes.io/name: namespace
     app.kubernetes.io/instance: system
     app.kubernetes.io/component: manager
-    app.kubernetes.io/created-by: swansoner
-    app.kubernetes.io/part-of: swansoner
+    app.kubernetes.io/created-by: swansonator
+    app.kubernetes.io/part-of: swansonator
     app.kubernetes.io/managed-by: kustomize
   name: system
 ---
@@ -21,8 +21,8 @@ metadata:
     app.kubernetes.io/name: deployment
     app.kubernetes.io/instance: controller-manager
     app.kubernetes.io/component: manager
-    app.kubernetes.io/created-by: swansoner
-    app.kubernetes.io/part-of: swansoner
+    app.kubernetes.io/created-by: swansonator
+    app.kubernetes.io/part-of: swansonator
     app.kubernetes.io/managed-by: kustomize
 spec:
   selector:

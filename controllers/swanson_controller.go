@@ -35,7 +35,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
-	parksv1alpha1 "github.com/jacobboykin/swansoner/api/v1alpha1"
+	parksv1alpha1 "github.com/jacobboykin/swansonator/api/v1alpha1"
 )
 
 const (
@@ -51,9 +51,9 @@ type SwansonReconciler struct {
 	Recorder record.EventRecorder
 }
 
-//+kubebuilder:rbac:groups=parks.jacobboykin.com,resources=swansons,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=parks.jacobboykin.com,resources=swansons/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=parks.jacobboykin.com,resources=swansons/finalizers,verbs=update
+//+kubebuilder:rbac:groups=parks.department.com,resources=swansons,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=parks.department.com,resources=swansons/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=parks.department.com,resources=swansons/finalizers,verbs=update
 
 //+kubebuilder:rbac:groups=core,resources=events,verbs=create;patch
 //+kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
