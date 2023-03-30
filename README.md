@@ -1,11 +1,9 @@
 # swansonator
 A Kubernetes Operator that manages the mission-critical web application, [swanson](https://github.com/jacobboykin/swanson).
 
-TODO fix this with links
-
-* Description
-* Getting Started
-* Project Notes for Reviewers
+* [Description](https://github.com/jacobboykin/swansonator#Description)
+* [Getting Started](https://github.com/jacobboykin/swansonator#getting-started)
+* [Project Notes for Reviewers](https://github.com/jacobboykin/swansonator#project-notes-for-reviewers)
 
 ## Description
 [swanson](https://github.com/jacobboykin/swanson) is a silly little web server I made just for this Operator project. It renders a GIF of Ron Swanson based on the value of the `SWANSON_KIND` environment variable. The swansonator Operator will manage a Deployment and Cluster IP Service for the swanson web app. The Swanson CRD exposes two values for you to configure your swanson instance:
@@ -57,7 +55,7 @@ Forwarding from [::1]:8080 -> 8080
 ```
 2. Visit the app in your browser:
 
-TODO: INSERT CHAOS RON
+![Screen Shot 2023-03-29 at 11 26 59 PM](https://user-images.githubusercontent.com/9063688/228722933-611e8bd1-604f-48db-9b70-fdf73ed2222d.png)
 
 ### Make a change to the desired state
 1. Stop the port-forwarding process (i.e. via ctrl-c). The change will trigger new Pods to roll out, and will break the port-forwarding.
@@ -68,10 +66,14 @@ $ kubectl patch swanson swanson-sample -p '{"spec":{"kind": "happy"}}' --type=me
 3. Wait for the new Pods to roll out after the Deployment is updated. 
 4. Start port-forwarding again, and visit the app in your browser:
 
-TODO: INSERT HAPPY RON
+![Screen Shot 2023-03-29 at 10 26 02 PM](https://user-images.githubusercontent.com/9063688/228722990-afa0ae12-279d-4957-93cf-c5ec5fb13798.png)
 
 ### Tear it all down
 Once you're done testing, you can uninstall the operator from the cluster by running:
 ```shell
 $ make undeploy
 ```
+
+## Project Notes for Reviewers
+
+TODO
